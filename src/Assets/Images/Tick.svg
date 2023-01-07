@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#f2f2f2"/>
+    </radialGradient>
+  </defs>
+  <g id="Group_1681" data-name="Group 1681" transform="translate(-986 -641)">
+    <circle id="Ellipse_91" data-name="Ellipse 91" cx="12" cy="12" r="12" transform="translate(986 641)" fill="url(#radial-gradient)"/>
+    <path id="Path_1734" data-name="Path 1734" d="M309.939,229.291c.243-.253.454-.481.674-.7q3.224-3.2,6.45-6.4a.849.849,0,0,1,1.076-.166.828.828,0,0,1,.164,1.294c-.218.227-.445.444-.669.666l-7.028,6.967a.852.852,0,0,1-1.328,0c-1.357-1.345-2.709-2.7-4.072-4.035a.836.836,0,0,1,.345-1.434.846.846,0,0,1,.849.25c.725.723,1.456,1.441,2.181,2.165C309.028,228.351,309.467,228.808,309.939,229.291Z" transform="translate(686.275 426.351)" fill="#aaa" fill-rule="evenodd"/>
+  </g>
+</svg>

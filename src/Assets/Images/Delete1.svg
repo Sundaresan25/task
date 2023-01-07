@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <radialGradient id="radial-gradient" cx="0.5" cy="0.5" r="0.5" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#f2f2f2"/>
+    </radialGradient>
+  </defs>
+  <g id="Group_1674" data-name="Group 1674" transform="translate(0.13)">
+    <circle id="Ellipse_91" data-name="Ellipse 91" cx="18" cy="18" r="18" transform="translate(-0.13)" fill="url(#radial-gradient)"/>
+    <g id="iconfinder_basket_1814090" transform="translate(8.973 7.828)">
+      <g id="Icon-Trash" transform="translate(0 0)">
+        <path id="Fill-6" d="M-207.5-205.1h1.283v10.263H-207.5Z" transform="translate(212.632 211.472)" fill="#aaa"/>
+        <path id="Fill-7" d="M-201.5-205.1h1.283v10.263H-201.5Z" transform="translate(209.198 211.472)" fill="#aaa"/>
+        <path id="Fill-8" d="M-195.5-205.1h1.283v10.263H-195.5Z" transform="translate(205.764 211.472)" fill="#aaa"/>
+        <path id="Fill-9" d="M-219.5-214.1h16.678v1.283H-219.5Z" transform="translate(219.5 216.623)" fill="#aaa"/>
+        <path id="Fill-10" d="M-201.071-216.835h-1.2v-1.283a.675.675,0,0,0-.684-.684h-2.566a.675.675,0,0,0-.684.684v1.283h-1.2v-1.283A1.9,1.9,0,0,1-205.518-220h2.566a1.9,1.9,0,0,1,1.882,1.882v1.283" transform="translate(212.575 220)" fill="#aaa"/>
+        <path id="Fill-11" d="M-205.595-195.338h-7.7a2.076,2.076,0,0,1-2.01-1.882l-1.2-15.4,1.283-.086,1.2,15.4a.775.775,0,0,0,.727.684h7.7a.743.743,0,0,0,.727-.684l1.2-15.4,1.283.086-1.2,15.4a2.042,2.042,0,0,1-2.01,1.882" transform="translate(217.783 215.822)" fill="#aaa"/>
+      </g>
+    </g>
+  </g>
+</svg>
