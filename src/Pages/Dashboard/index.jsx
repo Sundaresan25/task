@@ -40,6 +40,7 @@ import AnalyticsOutlinedIcon from "@mui/icons-material/AnalyticsOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import { NavbarOverlay } from "../../Components/Dashboard/NavbarOverlay";
 import profile_pic from "../../Assets/Images/DsK2dHMg.jpeg";
+import clsx from "clsx";
 
 const drawerWidth = 240;
 
@@ -75,6 +76,18 @@ const useStyles = makeStyles(() =>
     "@media (max-width: 600px)": {
       btnClass: {
         fontSize: "10px ",
+      },
+      navbarTitle: {
+        "& p": {
+          fontSize: "10px",
+          marginBottom: "0px",
+        },
+        "& svg": {
+          width: "1rem",
+        },
+      },
+      findStyle: {
+        width: "20px !important",
       },
       bottomGrid: {
         marginTop: "0px !important",
@@ -291,7 +304,9 @@ export default function Index() {
               variant="standard"
             />
 
-            <div className="d-flex align-items-center">
+            <div
+              className={clsx(classes.navbarTitle, "d-flex align-items-center")}
+            >
               <NotificationsNoneOutlinedIcon
                 style={{ color: "#4D4F5C" }}
                 onClick={() =>
@@ -299,7 +314,7 @@ export default function Index() {
                 }
               />
               <p
-                className="text-muted mb-0 mx-2"
+                className={clsx("text-muted mb-0 mx-md-2")}
                 onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
               >
                 Jhon Doe{" "}

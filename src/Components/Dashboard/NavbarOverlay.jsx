@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { createStyles, makeStyles } from "@mui/styles";
 import {
   Avatar,
+  Box,
   ListItem,
   ListItemAvatar,
   ListItemText,
@@ -16,6 +17,7 @@ import Divider from "@mui/material/Divider";
 import Image1 from "../../Assets/Images/DnTn-ClM.jpeg";
 import Image2 from "../../Assets/Images/13DorVeE.jpeg";
 import Image3 from "../../Assets/Images/i9qcy-1U.jpeg";
+import clsx from "clsx";
 
 const useStyles = makeStyles({
   root: {
@@ -53,6 +55,12 @@ const useStyles = makeStyles({
       top: "-15px",
       right: "28px",
     },
+  },
+  wrapperWidth: {
+    width: "180px",
+  },
+  notificationWidth: {
+    width: "400px",
   },
   overlay: {
     position: "fixed",
@@ -96,6 +104,11 @@ const useStyles = makeStyles({
       cursor: "pointer",
     },
   },
+  "@media (max-width: 600px)": {
+    notificationWidth: {
+      width: "280px",
+    },
+  },
 });
 
 // Navabar-overlay
@@ -126,9 +139,11 @@ export const NavbarOverlay = (props) => {
   return (
     <>
       <div className={`${classes.root} ${isOpen ? classes.open : ""}`}>
-        <div
-          className={classes.wrapper}
-          style={{ width: notification ? "400px" : "180px" }}
+        <Box
+          className={clsx(
+            classes.wrapper,
+            notification ? classes.notificationWidth : classes.wrapperWidth
+          )}
         >
           {notification ? (
             <>
@@ -180,7 +195,7 @@ export const NavbarOverlay = (props) => {
               </div>
             </>
           )}
-        </div>
+        </Box>
       </div>
 
       <div
