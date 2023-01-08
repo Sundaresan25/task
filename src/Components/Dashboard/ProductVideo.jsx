@@ -1,5 +1,7 @@
-import Image1 from "../Assets/Images/ODowwJqk.png";
+import Image1 from "../../Assets/Images/ODowwJqk.png";
 import MoreVertRoundedIcon from "@mui/icons-material/MoreVertRounded";
+
+// product componet
 export const ProductVideo = () => {
   return (
     <>

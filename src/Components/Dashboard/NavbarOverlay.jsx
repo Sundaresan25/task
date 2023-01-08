@@ -1,6 +1,4 @@
 import React, { useContext } from "react";
-
-import { NavLink } from "react-router-dom";
 import { createStyles, makeStyles } from "@mui/styles";
 import {
   Avatar,
@@ -14,6 +12,10 @@ import Person2Icon from "@mui/icons-material/Person2";
 import ReceiptLongRoundedIcon from "@mui/icons-material/ReceiptLongRounded";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Divider from "@mui/material/Divider";
+
+import Image1 from "../../Assets/Images/DnTn-ClM.jpeg";
+import Image2 from "../../Assets/Images/13DorVeE.jpeg";
+import Image3 from "../../Assets/Images/i9qcy-1U.jpeg";
 
 const useStyles = makeStyles({
   root: {
@@ -96,6 +98,8 @@ const useStyles = makeStyles({
   },
 });
 
+// Navabar-overlay
+
 export const NavbarOverlay = (props) => {
   const classes = useStyles();
   const { isOpen, onClose, notification } = props;
@@ -104,19 +108,19 @@ export const NavbarOverlay = (props) => {
       name: "Drew James",
       sub: "Assigned you on the call with Sara",
       sub2: "2 min ago",
-      img: "",
+      img: Image1,
     },
     {
       name: "Alexa Marry",
       sub: "Marked the task New UI as done",
       sub2: "5 min ago",
-      img: "",
+      img: Image2,
     },
     {
       name: "Eva Maria",
       sub: "Added a new comment on Sales task",
       sub2: "10 min ago",
-      img: "",
+      img: Image3,
     },
   ];
   return (
@@ -130,7 +134,7 @@ export const NavbarOverlay = (props) => {
             <>
               {Users.map((data, index) => (
                 <>
-                  <ListItem>
+                  <ListItem className="p-3">
                     <ListItemAvatar>
                       <Avatar alt="Remy Sharp" src={data.img}></Avatar>
                     </ListItemAvatar>
@@ -155,7 +159,7 @@ export const NavbarOverlay = (props) => {
               <Divider />
               <small
                 style={{ color: "#3B86FF" }}
-                className="d-flex justify-content-center"
+                className="d-flex justify-content-center my-2"
               >
                 Show More
               </small>

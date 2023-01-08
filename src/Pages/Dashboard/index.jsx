@@ -17,8 +17,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 import { createStyles, makeStyles } from "@mui/styles";
 import Grid from "@mui/material/Grid";
@@ -40,8 +39,11 @@ import ArchiveOutlinedIcon from "@mui/icons-material/ArchiveOutlined";
 import AnalyticsOutlinedIcon from "@mui/icons-material/AnalyticsOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import { NavbarOverlay } from "../../Components/Dashboard/NavbarOverlay";
+import profile_pic from "../../Assets/Images/DsK2dHMg.jpeg";
 
 const drawerWidth = 240;
+
+// create styles using makestyles in mui
 const useStyles = makeStyles(() =>
   createStyles({
     Drawer: {
@@ -63,8 +65,17 @@ const useStyles = makeStyles(() =>
     bottomGrid: {
       marginTop: "-90px !important",
     },
+    badge: {
+      color: "white",
+      borderRadius: "30px",
+      background: "#FF4A33",
+      padding: "5px 10px",
+    },
     "@media (max-width: 900px)": {},
     "@media (max-width: 600px)": {
+      btnClass: {
+        fontSize: "10px ",
+      },
       bottomGrid: {
         marginTop: "0px !important",
       },
@@ -72,11 +83,13 @@ const useStyles = makeStyles(() =>
   })
 );
 
+// Main component styles
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
     backgroundColor: " #f5f7fb",
+    overflow: "hidden",
 
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
@@ -94,6 +107,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   })
 );
 
+// App component styles
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
@@ -111,6 +125,7 @@ const AppBar = styled(MuiAppBar, {
   }),
 }));
 
+// Drawer component styles
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -124,9 +139,66 @@ export default function Index() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+
   const [isProfileMenuOpen, setIsProfileMenuOpen] = React.useState(false);
   const [isNotificationMenuOpen, setIsNotificationMenuOpen] =
     React.useState(false);
+
+  const [windowSize, setWindowSize] = React.useState(getWindowSize());
+
+  const [state, setState] = React.useState({
+    left: false,
+  });
+
+  // Toggle drawer function to open sidebar
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setState({ ...state, [anchor]: open });
+  };
+
+  // sidebar
+  const list = (anchor) => (
+    <Box
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
+      role="presentation"
+      style={{ height: "100vh", background: "#3C3B54" }}
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <DrawerHeader style={{ background: "#3C3B54" }}>
+        <Typography variant="h5" className=" text-white">
+          ACME
+        </Typography>
+        <IconButton onClick={handleDrawerClose}>
+          {theme.direction === "ltr" ? (
+            <ChevronLeftIcon />
+          ) : (
+            <ChevronRightIcon />
+          )}
+        </IconButton>
+      </DrawerHeader>
+      <Divider />
+      <List>
+        {menuItems.map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon style={{ color: "#B5B3FB" }}>
+                <text.icon />
+              </ListItemIcon>
+              <ListItemText primary={text.label} style={{ color: "white" }} />
+              {index !== 2 ? "" : <small className={classes.badge}>New</small>}
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
+  );
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -136,6 +208,7 @@ export default function Index() {
     setOpen(false);
   };
 
+  // sidebar Menus
   const menuItems = [
     { label: "Home", icon: OtherHousesOutlinedIcon },
     { label: "Dashboard", icon: InsertChartOutlinedTwoToneIcon },
@@ -144,9 +217,35 @@ export default function Index() {
     { label: "Admin", icon: SettingsOutlinedIcon },
   ];
 
+  // useEffect to identify the window size
+  React.useEffect(() => {
+    function handleWindowResize() {
+      setWindowSize(getWindowSize());
+    }
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    setOpen(false);
+    setState({ left: false });
+  }, [windowSize]);
+
+  // Get window size
+  function getWindowSize() {
+    const { innerWidth, innerHeight } = window;
+    return { innerWidth, innerHeight };
+  }
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
+
+      {/* Navbar */}
       <AppBar
         position="fixed"
         open={open}
@@ -159,7 +258,11 @@ export default function Index() {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
+            onClick={
+              windowSize.innerWidth > 640
+                ? handleDrawerOpen
+                : toggleDrawer("left", true)
+            }
             edge="start"
             sx={{ mr: 2, ...(open && { display: "none" }), color: "#0000001A" }}
           >
@@ -206,7 +309,7 @@ export default function Index() {
                   <KeyboardArrowDownIcon />
                 )}
               </p>
-              <Avatar src="" alt="" />
+              <Avatar src={profile_pic} alt="" />
               {isProfileMenuOpen && (
                 <NavbarOverlay
                   isOpen={isProfileMenuOpen}
@@ -224,6 +327,7 @@ export default function Index() {
           </div>
         </Toolbar>
       </AppBar>
+      {/* Drawer */}
       <Drawer
         className={classes.Drawer}
         sx={{
@@ -259,18 +363,37 @@ export default function Index() {
                   <text.icon />
                 </ListItemIcon>
                 <ListItemText primary={text.label} style={{ color: "white" }} />
+                {index !== 2 ? (
+                  ""
+                ) : (
+                  <small className={classes.badge}>New</small>
+                )}
               </ListItemButton>
             </ListItem>
           ))}
         </List>
       </Drawer>
+      {/* Drawer for mobile */}
+      <Drawer
+        anchor={"left"}
+        open={state["left"]}
+        onClose={toggleDrawer("left", false)}
+      >
+        {list("left")}
+      </Drawer>
+
+      {/* Main component */}
       <Main open={open}>
+        {/* drawer Header */}
         <DrawerHeader />
-        <Box className="p-3">
+        <Box className="p-sm-3">
           <div className="d-flex justify-content-between m-2">
             <Typography style={{ color: "#43425D" }} variant="h5">
               Overview
             </Typography>
+
+            {/* Add Fund button */}
+
             <Button
               className={classes.btnClass}
               sx={{ background: "#6763E3" }}
@@ -280,9 +403,12 @@ export default function Index() {
               Add Funds
             </Button>
           </div>
-          <Grid container spacing={2}>
+
+          {/* using Grid for container*/}
+
+          <Grid container spacing={4}>
             <Grid item xs={12} sm={4}>
-              <BarGraph attendence />
+              <BarGraph />
             </Grid>
             <Grid item xs={12} sm={4}>
               <PieChartgraph />

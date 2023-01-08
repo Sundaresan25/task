@@ -34,8 +34,12 @@ const useStyles = makeStyles(() =>
     },
   })
 );
+
+// Graph component
 export const BarGraph = (props) => {
   const classes = useStyles();
+
+  // data set for line graph
   useEffect(() => {
     let labels = ["Jan", "Feb", "March", "Apr", "May", "Jun"];
     let data = {
@@ -57,9 +61,10 @@ export const BarGraph = (props) => {
         },
       ],
     };
+
+    // config for line graph
     const config = {
       type: "line",
-
       data: data,
       options: {
         scales: {
@@ -69,6 +74,7 @@ export const BarGraph = (props) => {
         },
       },
     };
+
     const chart = new Chart(document.getElementById("lineChart"), config);
     // when component unmounts
     return () => {
@@ -91,6 +97,7 @@ export const BarGraph = (props) => {
           </select>
         </div>
 
+        {/* using id generate line graph */}
         <canvas
           className={classes.staticsChart}
           id="lineChart"

@@ -1,4 +1,3 @@
-import { PieChart } from "react-minimal-pie-chart";
 import DonutChart from "donut-chart-js";
 import * as React from "react";
 import { createStyles, makeStyles } from "@mui/styles";
@@ -17,34 +16,25 @@ const useStyles = makeStyles(() =>
       fontSize: "9px",
       color: "#4D4F5C",
     },
-    "@media (max-width: 900px)": {
-      logoconatiner: {
-        width: "80%",
-      },
-    },
-    "@media (max-width: 600px)": {
-      paratext: {
-        fontSize: "10px",
-      },
-      logoconatiner: {
-        width: "100%",
-      },
-      Formcontainer: {
-        height: "420px",
-      },
-    },
+    "@media (max-width: 900px)": {},
+    "@media (max-width: 600px)": {},
   })
 );
+
+// Chart Component
 
 function PieChartgraph() {
   const classes = useStyles();
 
+  // chart lables
   const labels = [
     { label: "France", value: 250, color: "#80E2FF" },
     { label: "Italy", value: 100, color: "#F49FA8" },
     { label: "Japan", value: 150, color: "#FFDF94" },
     { label: "Canada", value: 180, color: "#B5B3FB" },
   ];
+
+  // create chart using donut chart js library
   React.useEffect(() => {
     new DonutChart(document?.getElementById("myChart"), {
       data: labels,
@@ -56,15 +46,7 @@ function PieChartgraph() {
   return (
     <div className="bg-white rounded p-3">
       <p className={classes.head}>Sales Distribution</p>
-      {/*  
-    // <PieChart
-    // style={{height:"235px"}}
-    //   data={[
-    //     { title: "One", value: 15, color: "#0FC588" },
-    //     { title: "Two", value: 25, color: "#8732DF" },
 
-    //   ]}
-    // /> */}
       <div className="d-flex align-items-center justify-content-center postion-relative">
         <p
           style={{
@@ -74,6 +56,7 @@ function PieChartgraph() {
         >
           230,0900 <br /> sales
         </p>
+        {/* Using id generate t */}
         <canvas id="myChart" className={classes.chart}></canvas>
       </div>
       <Divider className="my-2" />

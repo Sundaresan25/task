@@ -10,6 +10,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Divider from "@mui/material/Divider";
+import profile_pic from "../../Assets/Images/DsK2dHMg.jpeg";
+import Image1 from "../../Assets/Images/DnTn-ClM.jpeg";
+import Image2 from "../../Assets/Images/13DorVeE.jpeg";
+import Image3 from "../../Assets/Images/i9qcy-1U.jpeg";
 
 import { createStyles, makeStyles } from "@mui/styles";
 
@@ -31,28 +35,31 @@ const useStyles = makeStyles(() =>
     "@media (max-width: 600px)": {},
   })
 );
+
+// Profile
 export const ProfileCard = (props) => {
   const { avatar } = props;
   const classes = useStyles();
 
+  // Users list
   const Users = [
     {
       name: "Drew James",
       sub: "United states",
       sub2: "Mobile : 8715674877",
-      img: "",
+      img: Image1,
     },
     {
       name: "Drew James",
       sub: "United states",
       sub2: "Mobile : 8715674877",
-      img: "",
+      img: Image2,
     },
     {
       name: "Drew James",
       sub: "United states",
       sub2: "Mobile : 8715674877",
-      img: "",
+      img: Image3,
     },
   ];
   return (
@@ -63,7 +70,7 @@ export const ProfileCard = (props) => {
             <Avatar
               className={classes.Avatar}
               alt="Remy Sharp"
-              src="/static/images/avatar/1.jpg"
+              src={profile_pic}
             />
           </div>
 
@@ -82,6 +89,7 @@ export const ProfileCard = (props) => {
         </div>
         <Divider />
         <List sx={{ width: "100%", bgcolor: "background.paper" }}>
+          {/* map the users */}
           {Users.map((data, index) => (
             <ListItem>
               <ListItemAvatar>

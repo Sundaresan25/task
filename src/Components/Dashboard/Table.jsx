@@ -31,6 +31,7 @@ const useStyles = makeStyles(() =>
 );
 export const Table = () => {
   const classes = useStyles();
+  // Table Data
   const tableData = [
     {
       Location: "google.com",
@@ -87,6 +88,8 @@ export const Table = () => {
       Conversion: "43%",
     },
   ];
+
+  // Table
   return (
     <>
       <div className="bg-white rounded p-3">
