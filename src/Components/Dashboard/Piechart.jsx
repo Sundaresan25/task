@@ -7,6 +7,7 @@ import FiberManualRecordRoundedIcon from "@mui/icons-material/FiberManualRecordR
 const useStyles = makeStyles(() =>
   createStyles({
     chart: {
+      // width: "100%",
       height: "260px",
     },
     head: {
@@ -17,7 +18,11 @@ const useStyles = makeStyles(() =>
       color: "#4D4F5C",
     },
     "@media (max-width: 900px)": {},
-    "@media (max-width: 600px)": {},
+    "@media (max-width: 600px)": {
+      chart: {
+        height: "100%",
+      },
+    },
   })
 );
 

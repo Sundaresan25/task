@@ -185,7 +185,14 @@ export default function Index() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <DrawerHeader style={{ background: "#3C3B54" }}>
-        <Typography variant="h5" className=" text-white">
+        <Typography
+          variant="h5"
+          className=" text-white"
+          sx={{
+            position: "absolute",
+            left: "29%",
+          }}
+        >
           ACME
         </Typography>
         <IconButton onClick={handleDrawerClose}>
@@ -358,7 +365,14 @@ export default function Index() {
         open={open}
       >
         <DrawerHeader style={{ background: "#3C3B54" }}>
-          <Typography variant="h5" className=" text-white">
+          <Typography
+            sx={{
+              position: "absolute",
+              left: "29%",
+            }}
+            variant="h5"
+            className=" text-white"
+          >
             ACME
           </Typography>
           <IconButton onClick={handleDrawerClose}>

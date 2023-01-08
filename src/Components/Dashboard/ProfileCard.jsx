@@ -32,7 +32,16 @@ const useStyles = makeStyles(() =>
       height: "100px !important",
     },
     "@media (max-width: 900px)": {},
-    "@media (max-width: 600px)": {},
+    "@media (max-width: 600px)": {
+      cardRoot: {
+        "& p": {
+          fontSize: "15px",
+        },
+        "& small": {
+          fontSize: "8px",
+        },
+      },
+    },
   })
 );
 
